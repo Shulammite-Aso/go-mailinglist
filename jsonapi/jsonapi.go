@@ -170,9 +170,10 @@ func Serve(db *sql.DB, bind string) {
 	http.Handle("/email/get_batch", GetEmailBatch(db))
 	http.Handle("/email/update", UpdateEmail(db))
 	http.Handle("/email/delete", DeleteEmail(db))
+	log.Printf("JSON API server listening on port %v\n", bind)
 
 	err := http.ListenAndServe(bind, nil)
 	if err != nil {
-		log.Fatal("JSON server error: %v", err)
+		log.Fatalf("JSON server error: %v", err)
 	}
 }

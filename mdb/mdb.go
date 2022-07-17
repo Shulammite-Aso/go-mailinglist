@@ -44,7 +44,7 @@ func emailEntryFromRow(row *sql.Rows) (*EmailEntry, error) {
 	var confirmedAt int64
 	var optOut bool
 
-	err := row.Scan(&id, &email, *&confirmedAt, &optOut)
+	err := row.Scan(&id, &email, &confirmedAt, &optOut)
 
 	if err != nil {
 		log.Println(err)
