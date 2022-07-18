@@ -92,7 +92,7 @@ func (s *MailServer) CreateEmail(ctx context.Context, req *pb.CreateEmailRequest
 
 	err := mdb.CreateEmail(s.db, req.EmailAddr)
 
-	if err == nil {
+	if err != nil {
 		return &pb.EmailResponse{}, nil
 	}
 	return emailResponse(s.db, req.EmailAddr)
@@ -105,7 +105,7 @@ func (s *MailServer) UpdateEmail(ctx context.Context, req *pb.UpdateEmailRequest
 
 	err := mdb.UpdateEmail(s.db, entry)
 
-	if err == nil {
+	if err != nil {
 		return &pb.EmailResponse{}, nil
 	}
 	return emailResponse(s.db, entry.Email)
@@ -116,7 +116,7 @@ func (s *MailServer) DeleteEmail(ctx context.Context, req *pb.DeleteEmailRequest
 
 	err := mdb.DeleteEmail(s.db, req.EmailAddr)
 
-	if err == nil {
+	if err != nil {
 		return &pb.EmailResponse{}, nil
 	}
 	return emailResponse(s.db, req.EmailAddr)
